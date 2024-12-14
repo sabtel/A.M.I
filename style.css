@@ -1,0 +1,328 @@
+ * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #d3cce3, #e9e4f0);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #4e4e4e;
+    padding: 0 20px;
+    overflow: hidden;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 60px 40px;
+    width: 100%;
+    max-width: 520px;
+    position: relative;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.upload-button {
+    background: linear-gradient(145deg, #f53844, #ff8a00);
+    border: none;
+    color: white;
+    padding: 16px 35px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
+}
+
+.upload-button:hover {
+    background: linear-gradient(145deg, #ff8a00, #f53844);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.upload-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.image-preview {
+    margin-top: 30px;
+    max-width: 400px;
+    max-height: 400px;
+    border-radius: 15px;
+    border: 3px solid #f0f0f0;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-preview:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    position: relative; /* Add position relative for proper absolute positioning of the button */
+    margin-top: 30px;
+}
+
+.message {
+    font-size: 18px;
+    color: #777;
+    margin-top: 20px;
+    font-weight: 400;
+}
+
+.classification-btn,
+.mass-btn {
+    background: linear-gradient(145deg, #3faffa, #0e6b92);
+    border: double;
+    border-width: 5px;
+    color: white;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    display: none; /* Hidden initially */
+}
+
+.classification-btn:hover,
+.mass-btn:hover {
+    background: linear-gradient(145deg, #0e6b92, #3faffa);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.classification-btn:active,
+.mass-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.detector-btn {
+    width: 50px;
+    height: 50px;
+    background-color: #3faffa;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute; /* Changed to absolute */
+    bottom: 170px; /* Positioned at the bottom */
+    left: 30px; /* Positioned to the left */
+    display: none; /* Hidden initially */
+}
+
+.detector-btn:hover {
+    background-color: #0e6b92;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.detector-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+.modal button {
+    background: linear-gradient(145deg, #3faffa, #0e6b92);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal button:hover {
+    background: linear-gradient(145deg, #0e6b92, #3faffa);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.modal button:active {
+    transform: translateY(2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.detector-btn {
+    display: inline-block;
+    margin-bottom: 10px; /* Add spacing below Detector button */
+}
+
+.circular-btn {
+    display: none; /* Start hidden */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #6200ea; /* Elegant purple */
+    border: none;
+    color: white;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    position: absolute; /* Position relative to the container */
+    top: 650px; /* Position just below the Detector button */
+    left: 30px; /* Align with the Detector button */
+}
+
+.circular-btn:hover {
+    background-color: #3700b3; /* Darker purple on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.circular-btn:active {
+    background-color: #1c0036; /* Even darker shade on active press */
+    transform: scale(0.95); /* Shrink slightly on press */
+}
+/* Styling for labeled image containers */
+.labeled-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Styling for the surface area label */
+.image-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    background-color: #f8f8f8;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    width: fit-content;
+}
+
+.analyze-btn {
+    width: 50px;
+    height: 50px;
+    background-color: #2ec0c0;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute; /* Position relative to .mass-btn */
+    bottom: 11; /* Align with the bottom of .mass-btn */
+    right: 11; /* Align with the right of .mass-btn */
+    display: none; /* Hidden initially */
+}
+
+.analyze-btn:hover {
+    background-color: #0e6b92;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.analyze-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.notepad {
+    background: #f7f9fc;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.notepad h2 {
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+}
+
+.notepad p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
