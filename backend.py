@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
 # Load the CSV file into a DataFrame
-CSV_FILE_PATH = r"D:\my new file for analyze.csv"  # Update with your file path
+CSV_FILE_PATH = r"a/my new file for analyze.csv"  # Update with your file path
 data = pd.read_csv(CSV_FILE_PATH)
 
 # Function to calculate similarity between two strings
